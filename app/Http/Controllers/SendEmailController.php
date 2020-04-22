@@ -16,12 +16,12 @@ class SendEmailController extends Controller
             'email' => ['required', 'email:rfc,dns']
         ]);
 
-        Mail::raw('mail', function ($message) use ($request) {
+        $mailText = $request->text . PHP_EOL. PHP_EOL . 'Sent from: ' . $request->email;
+
+        Mail::raw($mailText, function ($message) use ($request) {
             $message->to('dimitrijekocic123@gmail.com')
                     ->subject($request->reason);
             $message->from($request->email);
         });
-
-        //MAILGUN koristiti
     }
 }
