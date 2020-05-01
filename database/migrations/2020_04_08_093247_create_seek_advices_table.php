@@ -18,6 +18,7 @@ class CreateSeekAdvicesTable extends Migration
 
             $table->string('author')->default('Anonymous');
             $table->string('text', 1500);
+            $table->string('tags')->nullable();
             $table->integer('approvals')->default(0);
             $table->integer('disapprovals')->default(0);
             $table->double('rating', 3, 2)->default(0);

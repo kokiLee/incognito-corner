@@ -44,7 +44,7 @@ class StoryRepository implements StoryRepositoryInterface
         $story->reports += $request->report;
 
         if ($story->approvals >= 20 || $story->approvals - $story->disapprovals >= 10) {
-            if ($this->createStory($story->text, $story->author, $story->type)) {
+            if ($this->createStory($story->text, $story->author, $story->type, $story->tags)) {
                 return $story->delete();
             }
         }
@@ -74,13 +74,14 @@ class StoryRepository implements StoryRepositoryInterface
 
     #region Create/Update
 
-    public function createStory($text, $author, $type)
+    public function createStory($text, $author, $type, $tags)
     {
         $model = $this->storyTypes->get($type);
         
         $story = new $model;
         $story->text = $text;
         $story->author = $author;
+        $story->tags = $tags;
         return $story->save();
     }
 

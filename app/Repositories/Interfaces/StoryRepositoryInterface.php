@@ -13,6 +13,6 @@ interface StoryRepositoryInterface
     public function allRecent($model);
     public function allPopular($model);
     
-    public function createStory($text, $author, $type);
+    public function createStory($text, $author, $type, $tags);
     public function updateStory(Request $request, $model);
 }

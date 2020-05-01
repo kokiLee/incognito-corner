@@ -21,6 +21,7 @@ class CreateUnconfirmedStoriesTable extends Migration
             $table->integer('approvals')->default(0);
             $table->integer('disapprovals')->default(0);
             $table->integer('reports')->default(0);
+            $table->string('tags')->nullable();
             $table->string('type');
 
             $table->timestamps();
