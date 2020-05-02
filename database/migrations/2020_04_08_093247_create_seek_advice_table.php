@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeekAdvicesTable extends Migration
+class CreateSeekAdviceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSeekAdvicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('seek_advices', function (Blueprint $table) {
+        Schema::create('seek_advice', function (Blueprint $table) {
             $table->id();
 
             $table->string('author')->default('Anonymous');
@@ -38,6 +38,6 @@ class CreateSeekAdvicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seek_advices');
+        Schema::dropIfExists('seek_advice');
     }
 }
