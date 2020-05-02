@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class SeekAdvice extends Model
 {
+    protected $table = 'seek_advice';
+
     protected $guarded = [];
 
     protected $attributes = [
