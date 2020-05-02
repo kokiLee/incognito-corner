@@ -28,6 +28,7 @@ class StoriesSeeder extends Seeder
             Anecdote::create([
                 'author' => $faker->name,
                 'text' => $faker->realText(rand(50, 1000)),
+                'tags' => $faker->randomElement(['#dika', '#laza', '#maksa', '#dika #jelena', '#laza #maksa', '#aleks #laza #maksa']),
                 'approvals' => $faker->numberBetween(1, 50),
                 'disapprovals' => $faker->numberBetween(0, 20),
                 'rating' => $faker->randomFloat(2, 0, 5),
@@ -39,6 +40,7 @@ class StoriesSeeder extends Seeder
             SeekAdvice::create([
                 'author' => $faker->name,
                 'text' => $faker->realText(rand(50, 1000)),
+                'tags' => $faker->randomElement(['#dika', '#laza', '#maksa', '#dika #jelena', '#laza #maksa', '#aleks #laza #maksa']),
                 'approvals' => $faker->numberBetween(1, 50),
                 'disapprovals' => $faker->numberBetween(0, 20),
                 'rating' => $faker->randomFloat(2, 0, 5),
@@ -50,6 +52,7 @@ class StoriesSeeder extends Seeder
             Confession::create([
                 'author' => $faker->name,
                 'text' => $faker->realText(rand(50, 1000)),
+                'tags' => $faker->randomElement(['#dika', '#laza', '#maksa', '#dika #jelena', '#laza #maksa', '#aleks #laza #maksa']),
                 'approvals' => $faker->numberBetween(1, 50),
                 'disapprovals' => $faker->numberBetween(0, 20),
                 'rating' => $faker->randomFloat(2, 0, 5),
@@ -61,6 +64,7 @@ class StoriesSeeder extends Seeder
             UnconfirmedStory::create([
                 'author' => $faker->name,
                 'text' => $faker->realText(rand(50, 1000)),
+                'tags' => $faker->randomElement(['#dika', '#laza', '#maksa', '#dika #jelena', '#laza #maksa', '#aleks #laza #maksa']),
                 'approvals' => $faker->numberBetween(1, 50),
                 'disapprovals' => $faker->numberBetween(0, 20),
                 'type' => $faker->randomElement(['anecdotes', 'seek-advice', 'confessions'])

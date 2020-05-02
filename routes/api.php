@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['cors'])->group(function () {
     
-        /** STORIES PART */
+    /** STORIES PART */
     Route::get('/unconfirmed-stories', 'UnconfirmedStoryController@getAll');
     Route::post('/unconfirmed-stories', 'UnconfirmedStoryController@store');
     Route::put('/unconfirmed-stories/{id}', 'UnconfirmedStoryController@update');
