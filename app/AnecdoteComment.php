@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FunnyEventComment extends Model
+class AnecdoteComment extends Model
 {
     protected $guarded = [];
 
@@ -18,6 +18,6 @@ class FunnyEventComment extends Model
 
     public function subcomments()
     {
-        return $this->hasMany('App\FunnyEventSubcomment', 'comment_id');
+        return $this->hasMany('App\AnecdoteSubcomment', 'comment_id');
     }
 }

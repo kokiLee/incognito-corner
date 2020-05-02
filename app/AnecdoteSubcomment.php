@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FunnyEventSubcomment extends Model
+class AnecdoteSubcomment extends Model
 {
     protected $guarded = [];
 

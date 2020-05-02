@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\FunnyEvent;
-use App\FunnyEventComment;
+use App\Anecdote;
+use App\AnecdoteComment;
 use App\Repositories\Interfaces\CommentRepositoryInterface;
 
-class FunnyEventCommentController extends Controller
+class AnecdoteCommentController extends Controller
 {
     private $commentRepository;
 
@@ -18,18 +18,18 @@ class FunnyEventCommentController extends Controller
 
     public function getAllWithStory(Request $request)
     {
-        return $this->commentRepository->allCommentsWithStory($request, FunnyEvent::class);
+        return $this->commentRepository->allCommentsWithStory($request, Anecdote::class);
     }
 
     public function store(Request $request)
     {
-        $comment = $this->commentRepository->addComment($request, FunnyEventComment::class, FunnyEvent::class);
+        $comment = $this->commentRepository->addComment($request, AnecdoteComment::class, Anecdote::class);
         return response()->json($comment, 201);
     }
 
     public function update(Request $request)
     {
-        $success = $this->commentRepository->updateComment($request, FunnyEventComment::class);
+        $success = $this->commentRepository->updateComment($request, AnecdoteComment::class);
         return response()->json($success, 200);
     }
 }

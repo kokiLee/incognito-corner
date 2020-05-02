@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-use App\FunnyEvent;
+use App\Anecdote;
 use App\SeekAdvice;
 use App\Confession;
 use App\UnconfirmedStory;
@@ -18,14 +18,14 @@ class StoriesSeeder extends Seeder
     {
         $faker = Faker::create();
         
-        FunnyEvent::query()->delete();
+        Anecdote::query()->delete();
         SeekAdvice::query()->delete();
         Confession::query()->delete();
         UnconfirmedStory::query()->delete();
 
         for ($i = 0; $i < 25; $i++)
         {
-            FunnyEvent::create([
+            Anecdote::create([
                 'author' => $faker->name,
                 'text' => $faker->realText(rand(50, 1000)),
                 'approvals' => $faker->numberBetween(1, 50),
@@ -63,7 +63,7 @@ class StoriesSeeder extends Seeder
                 'text' => $faker->realText(rand(50, 1000)),
                 'approvals' => $faker->numberBetween(1, 50),
                 'disapprovals' => $faker->numberBetween(0, 20),
-                'type' => $faker->randomElement(['funny-events', 'seek-advice', 'confessions'])
+                'type' => $faker->randomElement(['anecdotes', 'seek-advice', 'confessions'])
             ]);
         }
     }

@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Repositories\Interfaces\StoryRepositoryInterface;
 use App\UnconfirmedStory;
-use App\FunnyEvent;
+use App\Anecdote;
 use App\SeekAdvice;
 use App\Confession;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ class StoryRepository implements StoryRepositoryInterface
 
     public function __construct ()
     {
-        $this->storyTypes = collect(['funny-events' => FunnyEvent::class, 'seek-advice' => SeekAdvice::class, 'confessions' => Confession::class]);
+        $this->storyTypes = collect(['anecdotes' => Anecdote::class, 'seek-advice' => SeekAdvice::class, 'confessions' => Confession::class]);
     }
 
     #region UnconfirmedStories

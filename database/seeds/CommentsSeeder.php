@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-use App\FunnyEventComment;
+use App\AnecdoteComment;
 use App\SeekAdviceComment;
 use App\ConfessionComment;
-use App\FunnyEventSubcomment;
+use App\AnecdoteSubcomment;
 use App\SeekAdviceSubcomment;
 use App\ConfessionSubcomment;
 
@@ -20,13 +20,13 @@ class CommentsSeeder extends Seeder
     {
         $faker = Faker::create();
         
-        FunnyEventComment::query()->delete();
+        AnecdoteComment::query()->delete();
         SeekAdviceComment::query()->delete();
         ConfessionComment::query()->delete();
 
         for ($i = 0; $i < 150; $i++)
         {
-            FunnyEventComment::create([
+            AnecdoteComment::create([
                 'author' => $faker->name,
                 'text' => $faker->realText(rand(20, 500)),
                 'approvals' => $faker->numberBetween(1, 50),
@@ -55,13 +55,13 @@ class CommentsSeeder extends Seeder
             ]);
         }
 
-        FunnyEventSubcomment::query()->delete();
+        AnecdoteSubcomment::query()->delete();
         SeekAdviceSubcomment::query()->delete();
         ConfessionSubcomment::query()->delete();
 
         for ($i = 0; $i < 100; $i++)
         {
-            FunnyEventSubcomment::create([
+            AnecdoteSubcomment::create([
                 'author' => $faker->name,
                 'text' => $faker->realText(rand(20, 500)),
                 'approvals' => $faker->numberBetween(1, 50),

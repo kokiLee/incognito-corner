@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\FunnyEvent;
+use App\Anecdote;
 use App\Repositories\Interfaces\StoryRepositoryInterface;
 
-class FunnyEventController extends Controller
+class AnecdoteController extends Controller
 {
     private $storyRepository;
 
@@ -17,17 +17,17 @@ class FunnyEventController extends Controller
 
     public function getAllRecent()
     {
-        return $this->storyRepository->allRecent(FunnyEvent::class);
+        return $this->storyRepository->allRecent(Anecdote::class);
     }
 
     public function getAllPopular()
     {
-        return $this->storyRepository->allPopular(FunnyEvent::class);
+        return $this->storyRepository->allPopular(Anecdote::class);
     }
 
     public function update(Request $request)
     {
-        $success = $this->storyRepository->updateStory($request, FunnyEvent::class);
+        $success = $this->storyRepository->updateStory($request, Anecdote::class);
         return response()->json($success, 200);
     }
 }

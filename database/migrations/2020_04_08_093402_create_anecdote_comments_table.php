@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFunnyEventCommentsTable extends Migration
+class CreateAnecdoteCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateFunnyEventCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('funny_event_comments', function (Blueprint $table) {
+        Schema::create('anecdote_comments', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('story_id');
-            $table->foreign('story_id')->references('id')->on('funny_events')->onDelete('cascade');
+            $table->foreign('story_id')->references('id')->on('anecdotes')->onDelete('cascade');
 
             $table->string('author')->default('Anonymous');
             $table->string('text', 1000);
@@ -37,6 +37,6 @@ class CreateFunnyEventCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('funny_event_comments');
+        Schema::dropIfExists('anecdote_comments');
     }
 }
