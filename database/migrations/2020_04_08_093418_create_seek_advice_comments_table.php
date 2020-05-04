@@ -17,7 +17,7 @@ class CreateSeekAdviceCommentsTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('story_id');
-            $table->foreign('story_id')->references('id')->on('seek_advices')->onDelete('cascade');
+            $table->foreign('story_id')->references('id')->on('seek_advice')->onDelete('cascade');
 
             $table->string('author')->default('Anonymous');
             $table->string('text', 1000);
