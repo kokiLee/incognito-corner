@@ -22,7 +22,7 @@ class StoryRepository implements StoryRepositoryInterface
 
     public function allUnconfirmedStories()
     {
-        return UnconfirmedStory::oldest()->get();
+        return UnconfirmedStory::inRandomOrder()->get();
     }
 
     public function createUnconfirmedStory(Request $request)
