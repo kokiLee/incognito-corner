@@ -23,7 +23,7 @@ class StoriesSeeder extends Seeder
         Confession::query()->delete();
         UnconfirmedStory::query()->delete();
 
-        for ($i = 0; $i < 10000; $i++)
+        for ($i = 0; $i < 1000; $i++)
         {
             Anecdote::create([
                 'author' => $faker->name,
