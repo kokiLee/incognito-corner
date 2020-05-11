@@ -24,7 +24,7 @@ class CommentsSeeder extends Seeder
         SeekAdviceComment::query()->delete();
         ConfessionComment::query()->delete();
 
-        for ($i = 0; $i < 150; $i++)
+        for ($i = 0; $i < 10000; $i++)
         {
             AnecdoteComment::create([
                 'author' => $faker->name,
@@ -33,7 +33,7 @@ class CommentsSeeder extends Seeder
                 'disapprovals' => $faker->numberBetween(0, 20),
                 'popularity' => $faker->numberBetween(2, 100),
                 'number_of_subcomments' => $faker->numberBetween(1, 10),
-                'story_id' => $faker->numberBetween(1, 25)
+                'story_id' => $faker->numberBetween(1, 100)
             ]);
             SeekAdviceComment::create([
                 'author' => $faker->name,
@@ -42,7 +42,7 @@ class CommentsSeeder extends Seeder
                 'disapprovals' => $faker->numberBetween(0, 20),
                 'popularity' => $faker->numberBetween(2, 100),
                 'number_of_subcomments' => $faker->numberBetween(1, 10),
-                'story_id' => $faker->numberBetween(1, 25)
+                'story_id' => $faker->numberBetween(1, 100)
             ]);
             ConfessionComment::create([
                 'author' => $faker->name,
@@ -51,7 +51,7 @@ class CommentsSeeder extends Seeder
                 'disapprovals' => $faker->numberBetween(0, 20),
                 'popularity' => $faker->numberBetween(2, 100),
                 'number_of_subcomments' => $faker->numberBetween(1, 10),
-                'story_id' => $faker->numberBetween(1, 25)
+                'story_id' => $faker->numberBetween(1, 100)
             ]);
         }
 
@@ -59,28 +59,28 @@ class CommentsSeeder extends Seeder
         SeekAdviceSubcomment::query()->delete();
         ConfessionSubcomment::query()->delete();
 
-        for ($i = 0; $i < 100; $i++)
+        for ($i = 0; $i < 5000; $i++)
         {
             AnecdoteSubcomment::create([
                 'author' => $faker->name,
                 'text' => $faker->realText(rand(20, 500)),
                 'approvals' => $faker->numberBetween(1, 50),
                 'disapprovals' => $faker->numberBetween(0, 20),
-                'comment_id' => $faker->numberBetween(1, 40)
+                'comment_id' => $faker->numberBetween(1, 150)
             ]);
             SeekAdviceSubcomment::create([
                 'author' => $faker->name,
                 'text' => $faker->realText(rand(20, 500)),
                 'approvals' => $faker->numberBetween(1, 50),
                 'disapprovals' => $faker->numberBetween(0, 20),
-                'comment_id' => $faker->numberBetween(1, 40)
+                'comment_id' => $faker->numberBetween(1, 150)
             ]);
             ConfessionSubcomment::create([
                 'author' => $faker->name,
                 'text' => $faker->realText(rand(20, 500)),
                 'approvals' => $faker->numberBetween(1, 50),
                 'disapprovals' => $faker->numberBetween(0, 20),
-                'comment_id' => $faker->numberBetween(1, 40)
+                'comment_id' => $faker->numberBetween(1, 150)
             ]);
         }
     }
