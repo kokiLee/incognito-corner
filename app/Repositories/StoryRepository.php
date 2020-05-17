@@ -63,14 +63,14 @@ class StoryRepository implements StoryRepositoryInterface
     public function allRecent($model)
     {
         if ($model == "App\Anecdote")
-            return $model::latest()->limit(10)->get();
+            return $model::latest()->limit(1000)->get();
         else return $model::select('id', 'text', 'tags', 'approvals', 'disapprovals', 'rating', 'created_at')->latest()->get();
     }
     
     public function allPopular($model)
     {
         if ($model == "App\Anecdote")
-            return $model::orderBy('popularity', 'desc')->limit(10)->get();
+            return $model::orderBy('popularity', 'desc')->limit(1000)->get();
         else return $model::select('id', 'text', 'tags', 'approvals', 'disapprovals', 'rating', 'created_at')->orderBy('popularity', 'desc')->get();
     }
 
