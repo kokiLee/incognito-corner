@@ -8,6 +8,7 @@ use App\Anecdote;
 use App\SeekAdvice;
 use App\Confession;
 use Illuminate\Http\Request;
+use DateTime;
 
 class StoryRepository implements StoryRepositoryInterface
 {
@@ -61,12 +62,16 @@ class StoryRepository implements StoryRepositoryInterface
 
     public function allRecent($model)
     {
-        return $model::latest()->get();
+        if ($model == "App\Anecdote")
+            return $model::latest()->limit(10)->get();
+        else return $model::select('id', 'text', 'tags', 'approvals', 'disapprovals', 'rating', 'created_at')->latest()->get();
     }
     
     public function allPopular($model)
     {
-        return $model::orderBy('popularity', 'desc')->get();
+        if ($model == "App\Anecdote")
+            return $model::orderBy('popularity', 'desc')->limit(10)->get();
+        else return $model::select('id', 'text', 'tags', 'approvals', 'disapprovals', 'rating', 'created_at')->orderBy('popularity', 'desc')->get();
     }
 
     #endregion Get
@@ -100,9 +105,20 @@ class StoryRepository implements StoryRepositoryInterface
             $story->approvals += $request->approve;
             $story->disapprovals += $request->disapprove;
         }
-        $story->popularity = round($story->rating * ($story->approvals + $story->disapprovals / 2 + $story->number_of_ratings) + $story->number_of_comments * 2, 2);
+
+        $story->popularity = $this->setPopularity($story);
 
         return $story->save();
+    }
+
+    public function setPopularity($story) 
+    {
+        $now = new DateTime(date("Y-m-d H:i:s"));
+        $created_at = new DateTime($story->created_at);
+        $daysDiff = (int)$now->diff($created_at)->format('%a');
+        $timeMultiplier = $daysDiff < 100 ? (100 - $daysDiff) / 100 : 0.01;
+        $popularity = ($story->rating * ($story->approvals + $story->disapprovals / 2 + $story->number_of_ratings) + $story->number_of_comments * 2) * $timeMultiplier;
+        return round($popularity, 2);
     }
     
     #endregion Create/Update

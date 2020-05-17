@@ -3,10 +3,17 @@
 namespace App\Repositories;
 
 use App\Repositories\Interfaces\CommentRepositoryInterface;
+use App\Repositories\Interfaces\StoryRepositoryInterface;
 use Illuminate\Http\Request;
 
 class CommentRepository implements CommentRepositoryInterface
 {
+    private $storyRepository;
+
+    public function __construct (StoryRepositoryInterface $storyRepository)
+    {
+        $this->storyRepository = $storyRepository;
+    }
 
     public function allCommentsWithStory(Request $request, $model)
     {
@@ -33,7 +40,7 @@ class CommentRepository implements CommentRepositoryInterface
 
         $story = $storyModel::find($request->story_id);
         $story->increment('number_of_comments');
-        $story->popularity += 2;
+        $story->popularity = $this->storyRepository->setPopularity($story);
         $story->save();
 
         return $comment;
