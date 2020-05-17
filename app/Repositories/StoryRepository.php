@@ -116,7 +116,7 @@ class StoryRepository implements StoryRepositoryInterface
         $now = new DateTime(date("Y-m-d H:i:s"));
         $created_at = new DateTime($story->created_at);
         $daysDiff = (int)$now->diff($created_at)->format('%a');
-        $timeMultiplier = $daysDiff < 100 ? (100 - $daysDiff) / 100 : 0.01;
+        $timeMultiplier = $daysDiff < 20 ? (100 - $daysDiff * 5) / 100 : 0.01;
         $popularity = ($story->rating * ($story->approvals + $story->disapprovals / 2 + $story->number_of_ratings) + $story->number_of_comments * 2) * $timeMultiplier;
         return round($popularity, 2);
     }
